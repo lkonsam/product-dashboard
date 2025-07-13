@@ -1,12 +1,31 @@
-# React + Vite
+Product Dashboard is a responsive and feature-rich web application built with React and Tailwind CSS that simulates a product listing and shopping cart experience. It includes a dynamic product table with features like draggable column headers, search with debounce, sorting, and pagination. Users can view, edit, delete, and add products to the cart, which is managed through a collapsible sidebar. The app also includes a reusable alert notification system for displaying success, error, or informational messages. Designed with usability and clean UI in mind, this project serves as a solid foundation for building modern dashboard-style interfaces.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#Folder structure is as below:
 
-Currently, two official plugins are available:
+src/
+├── components/
+│ ├── CartSidebar.jsx
+│ ├── CategoryFilter.jsx
+| ├── Header.jsx
+│ └── Pagination.jsx
+│ ├── ProductTable.jsx
+│ ├── StatsCards.jsx
+│ ├── Table.jsx
+|
+├── contexts/
+│ └── ProductContextProvider.js
+|
+├── hooks/
+│ └── useAlert.jsx
+│ ├── useCart.js
+│ └── useProductContext.jsx
+|
+├── utils/
+│ └── generateMockProducts.jsx
+|
+├── App.jsx
+├── main.jsx
+└── index.css
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#Install using npm create vite@latest product-dashboard -- --template react
+#Install tailwindcss using the npm with the direction from tailwind website https://tailwindcss.com/
