@@ -3,16 +3,28 @@ import useCart from "../hooks/useCart";
 import { generateMockProducts } from "../utils/generateMockProducts";
 import useAlert from "../hooks/useAlert";
 
-const products = generateMockProducts(1000);
+const { rawProducts, productMap, categorySet } = generateMockProducts(1000);
 
 const ProductContext = createContext(null);
 
 const ProductContextProvider = ({ children }) => {
+  const [products, setProducts] = React.useState(rawProducts);
   const cart = useCart();
+
   const { showMessage, AlertComponent } = useAlert();
 
   return (
-    <ProductContext.Provider value={{ products, cart, showMessage }}>
+    <ProductContext.Provider
+      value={{
+        products,
+        setProducts,
+        cart,
+        rawProducts,
+        showMessage,
+        productMap,
+        categorySet,
+      }}
+    >
       {children}
       <AlertComponent />
     </ProductContext.Provider>

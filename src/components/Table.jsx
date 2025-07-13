@@ -122,7 +122,7 @@ export default function Table({ data, headers, className = "" }) {
   };
 
   return (
-    <div className="my-3 pb-1 border border-gray-200 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300">
+    <div className="mb-3 pb-1 border border-gray-200 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300">
       <div className="min-w-full inline-block align-middle">
         <table
           className={`min-w-max bg-white text-sm text-left mx-auto ${className}`}
@@ -131,14 +131,14 @@ export default function Table({ data, headers, className = "" }) {
             <tr>
               <th
                 colSpan={draggableHeaders.length}
-                className="text-right text-gray-400 p-3"
+                className="textleft md:text-right text-gray-400 p-3"
               >
                 <input
                   type="text"
                   placeholder="Search..."
                   value={inputQuery}
                   onChange={(e) => setInputQuery(e.target.value)}
-                  className="p-1 border rounded w-full lg:w-2/5"
+                  className="p-1 border rounded w-80 lg:w-2/5"
                 />
               </th>
             </tr>

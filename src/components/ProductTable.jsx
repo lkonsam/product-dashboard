@@ -1,28 +1,38 @@
 import React, { useState } from "react";
 import Table from "./Table";
 import { useProductContext } from "../hooks/useProductContext";
+import CategoryFilter from "./CategoryFilter";
 
 export default function ProductTable() {
-  const { products, cart } = useProductContext();
+  const { products, setProducts, cart, showMessage, productMap } =
+    useProductContext();
 
-  const [editableProducts, setEditableProducts] = useState(products);
   const [modalProduct, setModalProduct] = useState(null);
 
   const handleDelete = (id) => {
-    setEditableProducts((prev) => prev.filter((p) => p.id !== id));
+    setProducts((prev) => prev.filter((p) => p.id !== id));
+    showMessage(
+      `Product ${productMap.get(id)?.name} deleted successfully!`,
+      "error"
+    );
   };
 
   const handleEdit = (id) => {
     const name = prompt("Enter new name:");
     if (name) {
-      setEditableProducts((prev) =>
+      setProducts((prev) =>
         prev.map((p) => (p.id === id ? { ...p, name } : p))
+      );
+      showMessage(
+        `Product ${productMap.get(id)?.name} updated successfully!`,
+        "success"
       );
     }
   };
 
   const handleAddToCart = (product) => {
     cart.addItem(product);
+    showMessage(`${product.name} added to cart!`, "success");
   };
 
   const handleView = (product) => {
@@ -40,7 +50,7 @@ export default function ProductTable() {
     { label: "⚙️", field: "actions" },
   ];
 
-  const data = editableProducts.map((p) => ({
+  const data = products.map((p) => ({
     ...p,
     image: (
       <img
@@ -81,7 +91,11 @@ export default function ProductTable() {
 
   return (
     <>
+      <hr className="border-t-3 border-gray-300 my-4" />
+
       <div className="w-full overflow-hidden">
+        <h1 className="text-2xl font-bold mb-4">📦 Product List</h1>
+        <CategoryFilter />
         <Table
           data={data}
           headers={headers}
