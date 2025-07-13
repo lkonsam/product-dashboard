@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Table from "./Table";
 import { useProductContext } from "../hooks/useProductContext";
 import CategoryFilter from "./CategoryFilter";
@@ -39,16 +39,19 @@ export default function ProductTable() {
     setModalProduct(product);
   };
 
-  const headers = [
-    { label: "ID", field: "id", sortable: true },
-    { label: "🖼️", field: "image" },
-    { label: "📦 Name", field: "name", sortable: true },
-    { label: "🏷️ Category", field: "category", sortable: true },
-    { label: "💲Price", field: "price", sortable: true },
-    { label: "📊 Stock", field: "stock", sortable: true },
-    { label: "🔖 Status", field: "status", sortable: true },
-    { label: "⚙️", field: "actions" },
-  ];
+  const headers = useMemo(
+    () => [
+      { label: "ID", field: "id", sortable: true },
+      { label: "🖼️", field: "image" },
+      { label: "📦 Name", field: "name", sortable: true },
+      { label: "🏷️ Category", field: "category", sortable: true },
+      { label: "💲Price", field: "price", sortable: true },
+      { label: "📊 Stock", field: "stock", sortable: true },
+      { label: "🔖 Status", field: "status", sortable: true },
+      { label: "⚙️", field: "actions" },
+    ],
+    []
+  );
 
   const data = products.map((p) => ({
     ...p,
