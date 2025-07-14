@@ -16,18 +16,22 @@ export default function Pagination({
         ⬅️
       </button>
 
-      {pageNumbers.map((page, index) => (
-        <button
-          key={index}
-          className={`px-3 py-1 border rounded ${
-            currentPage === page ? "bg-blue-500 text-white" : ""
-          }`}
-          onClick={() => typeof page === "number" && onPageChange(page)}
-          disabled={typeof page !== "number"}
-        >
-          {page}
-        </button>
-      ))}
+      {pageNumbers.map((page, index) =>
+        typeof page === "number" ? (
+          <button
+            key={index}
+            className={`transition-colors duration-200 hover:bg-yellow-400 border rounded px-2 py-1 md:px-3 md:py-1
+      ${currentPage === page ? "bg-blue-500 text-white" : ""}`}
+            onClick={() => onPageChange(page)}
+          >
+            {page}
+          </button>
+        ) : (
+          <span key={index} className="p-0 m-0 text-gray-500 cursor-default">
+            {page}
+          </span>
+        )
+      )}
 
       <button
         className="px-2 text-xl disabled:opacity-50"

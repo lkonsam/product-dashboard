@@ -93,7 +93,7 @@ export default function Table({ data, headers, className = "" }) {
   useEffect(() => {
     const range = 1;
     const arr = [1];
-    if (currentPage - range > 2) arr.push("..");
+    if (currentPage - range > 2) arr.push("...");
     for (
       let i = Math.max(2, currentPage - range);
       i <= Math.min(totalPages - 1, currentPage + range);
